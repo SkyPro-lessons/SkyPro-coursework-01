@@ -1,7 +1,7 @@
 package ru.skypro;
 
 public class Employee {
-    private static int counterId = 1;
+    private static int counterId = 1000;
     private final int id;
     private final String fullName;
     private int department;
