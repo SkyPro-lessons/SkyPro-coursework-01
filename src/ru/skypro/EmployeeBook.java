@@ -32,7 +32,7 @@ public class EmployeeBook {
 
     public void tasksSecondLevel() {
         System.out.println("1. После индексации зарплат:");
-        increaseSalary(employees, 10);
+        increaseSalary(employees, 12.12);
         printAllEmployees();
         printMinSalaryEmployeeByDepartment(2);
         printMaxSalaryEmployeeByDepartment(5);
@@ -134,7 +134,7 @@ public class EmployeeBook {
             }
         }
         if (!isAdded) {
-            System.out.println(" ! Сотрудник не добавлен. Недостаточно места в массиве: " + fio);
+            System.out.printf(" ! Сотрудник не добавлен. Недостаточно места в массиве: %s", fio);
         }
     }
 
@@ -168,8 +168,8 @@ public class EmployeeBook {
     }
 
     public Employee findMinSalaryEmployee(Employee[] employees) {
-        double minSalary = Double.MAX_VALUE;
-        Employee minSalaryEmployee = null;
+        double minSalary = employees[0].getSalary();
+        Employee minSalaryEmployee = employees[0];
         for (Employee employee : employees) {
             if (employee != null) {
                 if (minSalary > employee.getSalary()) {
@@ -213,8 +213,8 @@ public class EmployeeBook {
     }
 
     public Employee findMaxSalaryEmployee(Employee[] employees) {
-        double maxSalary = 0;
-        Employee maxSalaryEmployee = null;
+        double maxSalary = employees[0].getSalary();
+        Employee maxSalaryEmployee = employees[0];
         for (Employee employee : employees) {
             if (employee != null) {
                 if (maxSalary < employee.getSalary()) {
@@ -291,7 +291,14 @@ public class EmployeeBook {
         for (Employee employee : employees) {
             if (employee != null) {
                 double currSalary = employee.getSalary();
+                System.out.println("currSalary = " + currSalary);
+                System.out.println("currSalary * increasePercent = " + currSalary * increasePercent);
+                System.out.println("(double) Math.round(currSalary * increasePercent) = " + (double) Math.round(currSalary * increasePercent));
+                System.out.println("(double) Math.round(currSalary * increasePercent) / 100 = " + (double) Math.round(currSalary * increasePercent) / 100);
+
+
                 double newSalary = currSalary + (double) Math.round(currSalary * increasePercent) / 100;
+                System.out.println("newSalary = " + newSalary);
                 employee.setSalary(newSalary);
             }
         }

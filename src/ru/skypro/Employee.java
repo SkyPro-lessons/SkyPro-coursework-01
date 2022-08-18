@@ -8,9 +8,13 @@ public class Employee {
     private double salary;
 
     public Employee(String fullName, int department, double salary) {
-        id = counterId;
-        counterId++;
-        this.fullName = fullName;
+        id = counterId++;
+        if (fullName != null) {
+            this.fullName = fullName;
+        } else {
+            throw new IllegalArgumentException("Не введено ФИО сотрудника");
+        }
+
         this.department = department;
         this.salary = salary;
     }
